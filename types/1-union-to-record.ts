@@ -1,4 +1,4 @@
-type Fruit = "apple" | "banana" | "grapes";
+type Fruit = 'apple' | 'banana' | 'grapes';
 
 type FruitQuantities = Partial<Record<Fruit, number>>;
 
