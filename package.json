@@ -1,11 +1,15 @@
 {
   "name": "common-examples",
-  "module": "index.ts",
-  "type": "module",
   "private": true,
+  "type": "module",
+  "module": "index.ts",
+  "scripts": {
+    "format": "oxfmt --write .",
+    "lint": "oxlint"
+  },
   "devDependencies": {
     "@types/bun": "latest",
-    "oxfmt": "^0.23.0",
+    "oxfmt": "^0.24.0",
     "oxlint": "^1.38.0",
     "ultracite": "7.0.8"
   },

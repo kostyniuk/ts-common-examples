@@ -16,8 +16,11 @@
   "endOfLine": "lf",
   "experimentalSortPackageJson": true,
   "experimentalSortImports": {
-    "ignoreCase": true,
-    "newlinesBetween": true,
-    "order": "asc"
-  }
+    "ignoreCase": false,
+    "newlinesBetween": false,
+    "order": "asc",
+    "partitionByComment": true,
+    "partitionByNewline": false,
+    "sortSideEffects": false,
+  },
 }
