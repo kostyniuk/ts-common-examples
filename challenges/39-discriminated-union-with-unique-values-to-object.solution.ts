@@ -1,4 +1,4 @@
-import type { Equal, Expect } from "../helpers/type-utils";
+import { type Equal, type Expect } from "../helpers/type-utils";
 
 type Route =
   | {
