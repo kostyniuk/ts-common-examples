@@ -1,0 +1,11 @@
+{
+  "name": "typescript-fluency-quizzes",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "tsc --ignoreConfig --noEmit --strict --exactOptionalPropertyTypes --noUncheckedIndexedAccess --target ES2022 --module NodeNext --moduleResolution NodeNext"
+  },
+  "devDependencies": {
+    "typescript": "7.0.2"
+  }
+}

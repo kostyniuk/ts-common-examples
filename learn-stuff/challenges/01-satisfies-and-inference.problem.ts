@@ -1,0 +1,28 @@
+import type { Equal, Expect } from "../helpers/type-utils.js";
+
+type Color = "red" | "green" | "blue";
+type RGB = [red: number, green: number, blue: number];
+
+/**
+ * Fix the misspelled key and change how `palette` is checked so that:
+ * - every Color key is required;
+ * - values must be a string or RGB tuple;
+ * - red keeps its tuple type and green keeps its string type.
+ *
+ * Do not use a cast.
+ */
+const palette: Record<Color, string | RGB> = {
+  red: [255, 0, 0],
+  green: "#00ff00",
+  bleu: [0, 0, 255],
+};
+
+palette.red.at(0);
+palette.green.toUpperCase();
+
+type tests = [
+  Expect<Equal<typeof palette.red, RGB>>,
+  Expect<Equal<typeof palette.green, string>>,
+];
+
+export {};
