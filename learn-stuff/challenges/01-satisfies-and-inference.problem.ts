@@ -26,3 +26,7 @@ type tests = [
 ];
 
 export {};
+
+/**: Type says “treat this value as Type.”
+satisfies Type says “verify this value is compatible with Type, but retain its inferred structure.” */
+
