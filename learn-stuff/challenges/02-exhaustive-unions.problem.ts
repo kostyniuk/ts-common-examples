@@ -2,7 +2,8 @@ import { assertNever } from "../helpers/type-utils.js";
 
 type Shape =
   | { kind: "circle"; radius: number }
-  | { kind: "rectangle"; width: number; height: number };
+  | { kind: "rectangle"; width: number; height: number }
+  | { kind: "triangle"; base: number; height: number };
 
 /**
  * Handle rectangle exhaustively, then add and handle:
@@ -14,6 +15,10 @@ export function area(shape: Shape): number {
   switch (shape.kind) {
     case "circle":
       return Math.PI * shape.radius ** 2;
+    case "rectangle":
+      return Math.PI * shape.width ** 2;
+    case "triangle":
+      return shape.base + 2
     default:
       return assertNever(shape);
   }
