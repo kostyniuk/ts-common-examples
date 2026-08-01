@@ -13,7 +13,7 @@ type User = {
  * two-parameter utility from built-in utility types. Keys must belong to Type,
  * and only those selected properties are optional.
  */
-type UpdatePayload<Type, Keys> = never;
+type UpdatePayload<Type, Keys extends keyof Type> = Partial<Pick<Type, Keys>>;
 
 type UserUpdate = UpdatePayload<User, "name" | "email" | "role">;
 type Preferences = {
