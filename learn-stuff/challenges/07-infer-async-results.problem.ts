@@ -1,8 +1,9 @@
 import type { Equal, Expect } from "../helpers/type-utils.js";
 
 /**
- * Constrain Function to function types, infer its return type, and recursively
- * unwrap promises. Use infer and one built-in utility; do not use ReturnType.
+ * TYPE-ONLY CHALLENGE: change only AsyncResult. Constrain Function to function
+ * types, infer its return type, and recursively unwrap promises. Use infer and
+ * one built-in utility; do not use ReturnType.
  */
 type AsyncResult<Function> = never;
 

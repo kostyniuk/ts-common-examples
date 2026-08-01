@@ -1,8 +1,8 @@
 import type { Equal, Expect } from "../helpers/type-utils.js";
 
 /**
- * Implement both helpers. EachAsArray distributes over a union, while
- * UnionAsArray deliberately treats the union as one unit.
+ * TYPE-ONLY CHALLENGE: change only these two aliases. EachAsArray distributes
+ * over a union, while UnionAsArray deliberately treats the union as one unit.
  */
 type EachAsArray<Type> = never;
 type UnionAsArray<Type> = never;

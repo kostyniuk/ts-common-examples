@@ -4,12 +4,13 @@ type Color = "red" | "green" | "blue";
 type RGB = [red: number, green: number, blue: number];
 
 /**
- * Fix the misspelled key and change how `palette` is checked so that:
+ * TYPE-ONLY CHALLENGE: change only the typing of `palette`, never its values.
+ * Check `palette` so that:
  * - every Color key is required;
  * - values must be a string or RGB tuple;
  * - red keeps its tuple type and green keeps its string type.
  *
- * Do not use a cast.
+ * Do not use a cast or modify the object data.
  */
 const palette = {
   red: [255, 0, 0],
@@ -26,7 +27,3 @@ type tests = [
 ];
 
 export {};
-
-/**: Type says “treat this value as Type.”
-satisfies Type says “verify this value is compatible with Type, but retain its inferred structure.” */
-

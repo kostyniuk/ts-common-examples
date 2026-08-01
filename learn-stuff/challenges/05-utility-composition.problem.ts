@@ -9,8 +9,9 @@ type User = {
 };
 
 /**
- * Build a reusable two-parameter UpdatePayload using built-in utility types.
- * Keys must belong to Type, and only those selected properties are optional.
+ * TYPE-ONLY CHALLENGE: change only UpdatePayload. Build a reusable
+ * two-parameter utility from built-in utility types. Keys must belong to Type,
+ * and only those selected properties are optional.
  */
 type UpdatePayload<Type, Keys> = never;
 

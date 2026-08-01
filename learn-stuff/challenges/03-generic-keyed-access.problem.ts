@@ -1,13 +1,14 @@
 import type { Equal, Expect } from "../helpers/type-utils.js";
 
 /**
- * Rewrite pluck so keys must exist on the object and its return type is an
- * array of the selected property types. Use ordinary indexed access with no
- * casts or any.
+ * TYPE-ONLY CHALLENGE: type the declaration so keys must exist on the object
+ * and the return type is an array of the selected property types. Change only
+ * the declaration's generic parameters and type annotations.
  */
-export function pluck<T, K extends keyof T>(object: T, keys: readonly K[]): T[K][] {
-  return keys.map((key) => object[key]);
-}
+export declare function pluck<T, K extends keyof T>(
+  object: T,
+  keys: readonly K[],
+): T[K][];
 
 const user = { id: 42, name: "Ada", active: true };
 const identity = pluck(user, ["id", "name"]);

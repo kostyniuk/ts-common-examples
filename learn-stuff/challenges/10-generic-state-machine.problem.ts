@@ -1,8 +1,9 @@
-import { assertNever } from "../helpers/type-utils.js";
+import type { Equal, Expect } from "../helpers/type-utils.js";
 
 /**
- * Replace the bag of optionals with a generic discriminated union for exactly
- * four states: idle, loading, success with data, and failure with an error.
+ * TYPE-ONLY CHALLENGE: change only RequestState. Replace the bag of optionals
+ * with a generic discriminated union for exactly four states: idle, loading,
+ * success with data, and failure with an error.
  */
 export type RequestState<Data, Failure> = {
   loading: boolean;
@@ -10,15 +11,21 @@ export type RequestState<Data, Failure> = {
   error?: Failure;
 };
 
-/**
- * Exhaustively handle all four states. Access data/error without assertions
- * and finish with assertNever for future exhaustiveness.
- */
-export function describeState(
-  state: RequestState<{ count: number }, Error>,
-): string {
-  return JSON.stringify(state);
-}
+type tests = [
+  Expect<Equal<Extract<RequestState<number, Error>, { status: "idle" }>, { status: "idle" }>>,
+  Expect<
+    Equal<
+      Extract<RequestState<number, Error>, { status: "success" }>,
+      { status: "success"; data: number }
+    >
+  >,
+  Expect<
+    Equal<
+      Extract<RequestState<number, Error>, { status: "failure" }>,
+      { status: "failure"; error: Error }
+    >
+  >,
+];
 
 const idle: RequestState<number, Error> = { status: "idle" };
 const loading: RequestState<number, Error> = { status: "loading" };
@@ -40,4 +47,3 @@ void success;
 void failure;
 void missingData;
 void impossible;
-void assertNever;

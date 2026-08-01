@@ -1,9 +1,9 @@
 import type { Equal, Expect } from "../helpers/type-utils.js";
 
 /**
- * Type on() so it accepts only `${propertyName}Changed` events and infers the
- * matching property type for the callback. Do not overload per property or
- * use any.
+ * TYPE-ONLY CHALLENGE: change only the on() declaration so it accepts only
+ * `${propertyName}Changed` events and infers the matching property type for
+ * the callback. Do not overload per property or use any.
  */
 declare function on(
   object: object,

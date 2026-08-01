@@ -1,8 +1,9 @@
 import type { Equal, Expect } from "../helpers/type-utils.js";
 
 /**
- * Generate get${CapitalizedKey} methods for every string key. Each method
- * returns its original property's type; the original keys must not remain.
+ * TYPE-ONLY CHALLENGE: change only Getters. Generate get${CapitalizedKey}
+ * methods for every string key. Each method returns its original property's
+ * type; the original keys must not remain.
  */
 type Getters<Type> = never;
 
