@@ -5,8 +5,8 @@ import type { Equal, Expect } from "../helpers/type-utils.js";
  * array of the selected property types. Use ordinary indexed access with no
  * casts or any.
  */
-export function pluck(object: object, keys: readonly PropertyKey[]): unknown[] {
-  return keys.map((key) => Reflect.get(object, key));
+export function pluck<T, K extends keyof T>(object: T, keys: readonly K[]): T[K][] {
+  return keys.map((key) => object[key]);
 }
 
 const user = { id: 42, name: "Ada", active: true };
