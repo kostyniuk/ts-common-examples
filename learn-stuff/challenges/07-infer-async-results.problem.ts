@@ -7,12 +7,17 @@ import type { Equal, Expect } from "../helpers/type-utils.js";
  */
 type AsyncResult<Function> = never;
 
-declare function fetchUser(id: string): Promise<{
+// Runtime code is complete. Do not change these functions.
+async function fetchUser(id: string): Promise<{
   id: string;
   name: string;
-}>;
+}> {
+  return { id, name: "Ada" };
+}
 
-declare function countCachedUsers(): number;
+function countCachedUsers(): number {
+  return 3;
+}
 
 type tests = [
   Expect<Equal<AsyncResult<typeof fetchUser>, { id: string; name: string }>>,

@@ -7,11 +7,13 @@ import type { Equal, Expect } from "../helpers/type-utils.js";
  */
 type Getters<Type> = never;
 
-type ModelGetters = Getters<{
+type Model = {
   name: string;
   age: number;
   active: boolean;
-}>;
+};
+
+type ModelGetters = Getters<Model>;
 
 type tests = [
   Expect<
@@ -25,5 +27,15 @@ type tests = [
     >
   >,
 ];
+
+// Runtime code is complete. Do not change it.
+const model: Model = { name: "Ada", age: 37, active: true };
+const getters: ModelGetters = {
+  getName: () => model.name,
+  getAge: () => model.age,
+  getActive: () => model.active,
+};
+
+void getters;
 
 export {};

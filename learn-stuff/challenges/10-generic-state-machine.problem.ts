@@ -1,4 +1,5 @@
 import type { Equal, Expect } from "../helpers/type-utils.js";
+import { assertNever } from "../helpers/type-utils.js";
 
 /**
  * TYPE-ONLY CHALLENGE: change only RequestState. Replace the bag of optionals
@@ -26,6 +27,24 @@ type tests = [
     >
   >,
 ];
+
+// Runtime code is complete. Do not change it.
+export function describeState(
+  state: RequestState<{ count: number }, Error>,
+): string {
+  switch (state.status) {
+    case "idle":
+      return "Idle";
+    case "loading":
+      return "Loading";
+    case "success":
+      return `Loaded ${state.data.count}`;
+    case "failure":
+      return state.error.message;
+    default:
+      return assertNever(state);
+  }
+}
 
 const idle: RequestState<number, Error> = { status: "idle" };
 const loading: RequestState<number, Error> = { status: "loading" };

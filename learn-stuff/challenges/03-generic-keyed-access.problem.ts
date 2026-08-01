@@ -5,10 +5,17 @@ import type { Equal, Expect } from "../helpers/type-utils.js";
  * and the return type is an array of the selected property types. Change only
  * the declaration's generic parameters and type annotations.
  */
-export declare function pluck<T, K extends keyof T>(
+export function pluck<T, K extends keyof T>(
   object: T,
   keys: readonly K[],
 ): T[K][];
+// Runtime code is complete. Do not change this implementation.
+export function pluck(
+  object: object,
+  keys: readonly PropertyKey[],
+): unknown[] {
+  return keys.map((key) => Reflect.get(object, key));
+}
 
 const user = { id: 42, name: "Ada", active: true };
 const identity = pluck(user, ["id", "name"]);

@@ -14,4 +14,11 @@ type tests = [
   Expect<Equal<UnionAsArray<Input>, (string | number)[]>>,
 ];
 
+// Usage code is complete. Do not change it.
+const homogeneous: EachAsArray<Input> = Math.random() > 0.5 ? ["hello"] : [42];
+const mixed: UnionAsArray<Input> = ["hello", 42];
+
+void homogeneous;
+void mixed;
+
 export {};

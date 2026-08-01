@@ -5,11 +5,16 @@ import type { Equal, Expect } from "../helpers/type-utils.js";
  * `${propertyName}Changed` events and infers the matching property type for
  * the callback. Do not overload per property or use any.
  */
-declare function on(
+function on(
   object: object,
   event: string,
   callback: (value: unknown) => void,
 ): void;
+// Runtime code is complete. Do not change this implementation.
+function on(object: object, event: string, callback: Function): void {
+  const property = event.replace(/Changed$/, "");
+  callback(Reflect.get(object, property));
+}
 
 const person = { name: "Ada", age: 37, active: true };
 
