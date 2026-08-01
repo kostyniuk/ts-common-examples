@@ -5,17 +5,13 @@ import type { Equal, Expect } from "../helpers/type-utils.js";
  * annotations. The key must belong to the object, the value must match that
  * particular key, and the return type must preserve the object type.
  */
-export function setField(
-  object: object,
-  key: PropertyKey,
-  value: unknown,
-): unknown;
+
 // Runtime code is complete. Do not change this implementation.
-export function setField(
-  object: object,
-  key: PropertyKey,
-  value: unknown,
-): unknown {
+export function setField<T, K extends keyof T>(
+  object: T,
+  key: K,
+  value: T[K],
+): T {
   return { ...object, [key]: value };
 }
 
