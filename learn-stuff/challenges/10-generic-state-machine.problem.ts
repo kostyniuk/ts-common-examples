@@ -60,9 +60,21 @@ const missingData: RequestState<number, Error> = { status: "success" };
 // @ts-expect-error idle cannot contain stale data
 const impossible: RequestState<number, Error> = { status: "idle", data: 42 };
 
+// @ts-expect-error loading cannot contain data
+const loadingWithData: RequestState<number, Error> = { status: "loading", data: 42 };
+
+// @ts-expect-error failure requires an error
+const missingError: RequestState<number, Error> = { status: "failure" };
+
+// @ts-expect-error success cannot contain an error
+const successWithError: RequestState<number, Error> = { status: "success", data: 42, error: new Error("impossible") };
+
 void idle;
 void loading;
 void success;
 void failure;
 void missingData;
 void impossible;
+void loadingWithData;
+void missingError;
+void successWithError;

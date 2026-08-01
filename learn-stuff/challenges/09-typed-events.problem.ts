@@ -26,6 +26,18 @@ on(person, "nameChanged", (value) => {
   type test = Expect<Equal<typeof value, string>>;
 });
 
+on(person, "activeChanged", (value) => {
+  type test = Expect<Equal<typeof value, boolean>>;
+});
+
+const settings = { theme: "dark", retries: 3 };
+on(settings, "retriesChanged", (value) => {
+  type test = Expect<Equal<typeof value, number>>;
+});
+
+// @ts-expect-error activeChanged supplies a boolean, not a string
+on(person, "activeChanged", (value: string) => {});
+
 // @ts-expect-error no such property
 on(person, "emailChanged", () => {});
 

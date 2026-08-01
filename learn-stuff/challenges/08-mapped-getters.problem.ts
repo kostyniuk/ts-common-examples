@@ -7,10 +7,13 @@ import type { Equal, Expect } from "../helpers/type-utils.js";
  */
 type Getters<Type> = never;
 
+const internal = Symbol("internal");
+
 type Model = {
   name: string;
   age: number;
   active: boolean;
+  [internal]: Date;
 };
 
 type ModelGetters = Getters<Model>;
@@ -29,7 +32,12 @@ type tests = [
 ];
 
 // Runtime code is complete. Do not change it.
-const model: Model = { name: "Ada", age: 37, active: true };
+const model: Model = {
+  name: "Ada",
+  age: 37,
+  active: true,
+  [internal]: new Date(),
+};
 const getters: ModelGetters = {
   getName: () => model.name,
   getAge: () => model.age,

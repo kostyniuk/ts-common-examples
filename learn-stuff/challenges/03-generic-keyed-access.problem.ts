@@ -20,11 +20,17 @@ export function pluck(
 const user = { id: 42, name: "Ada", active: true };
 const identity = pluck(user, ["id", "name"]);
 const status = pluck(user, ["active"]);
+const product = { sku: "TS-101", price: 49, tags: ["types"] };
+const productDetails = pluck(product, ["price", "tags"]);
 
 type tests = [
   Expect<Equal<typeof identity, (number | string)[]>>,
   Expect<Equal<typeof status, boolean[]>>,
+  Expect<Equal<typeof productDetails, (number | string[])[]>>,
 ];
 
 // @ts-expect-error "missing" is not a key of user
 pluck(user, ["id", "missing"]);
+
+// @ts-expect-error "discount" is not a key of product
+pluck(product, ["sku", "discount"]);

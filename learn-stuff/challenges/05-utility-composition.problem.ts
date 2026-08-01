@@ -16,6 +16,12 @@ type User = {
 type UpdatePayload<Type, Keys> = never;
 
 type UserUpdate = UpdatePayload<User, "name" | "email" | "role">;
+type Preferences = {
+  theme: "light" | "dark";
+  pageSize: number;
+  locked: boolean;
+};
+type PreferencesUpdate = UpdatePayload<Preferences, "theme" | "pageSize">;
 
 type tests = [
   Expect<
@@ -24,7 +30,16 @@ type tests = [
       { name?: string; email?: string; role?: "admin" | "member" }
     >
   >,
+  Expect<
+    Equal<
+      PreferencesUpdate,
+      { theme?: "light" | "dark"; pageSize?: number }
+    >
+  >,
 ];
+
+// @ts-expect-error selected keys must exist on the source type
+type invalidKey = UpdatePayload<User, "missing">;
 
 const valid: UserUpdate = { role: "admin" };
 
